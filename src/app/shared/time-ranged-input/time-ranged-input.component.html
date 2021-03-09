@@ -1,0 +1,44 @@
+<div class="row">
+  <label [ngClass]= "labelClass + ' col-form-label'">{{ label }}</label>
+  <div [ngClass]="startFieldClass">
+    <div class="form-group">
+      <input
+        class="form-control datetimepicker"
+        placeholder="yyy/mm/dd"
+        [formControl]="startControl"
+        appDateMask
+      />
+    </div>
+  </div>
+  <!-- {{ startControl.errors | json}} -->
+
+  <label *ngIf="showErrors(startControl)" class="label-on-right">
+    <code *ngIf="startControl?.errors?.required">{{ startFieldErrorMsg }}</code>
+  </label>
+  <label *ngIf="showErrors(startControl)" class="label-on-right">
+    <code *ngIf="startControl?.errors?.dateTime">{{ isDateValidErrorMsg }}</code>
+  </label>
+  <label *ngIf="showErrors(form)" class="label-on-right">
+    <code *ngIf="form?.errors?.dateRangedTime">{{ isDateRangeValidErrorMsg }}</code>
+  </label>
+
+  <span class="col-form-label">到</span>
+  <div [ngClass]="endFieldClass">
+    <div class="form-group">
+      <input
+        class="form-control datetimepicker"
+        placeholder="yyy/mm/dd"
+        [formControl]="endControl"
+        appDateMask
+      />
+    </div>
+  </div>
+  <label *ngIf="showErrors(endControl)" class="label-on-right">
+    <code *ngIf="endControl?.errors?.required">{{ endFieldErrorMsg }}</code>
+  </label>
+  <label *ngIf="showErrors(endControl)" class="label-on-right">
+    <code *ngIf="endControl?.errors?.dateTime">{{ isDateValidErrorMsg }}</code>
+  </label>
+  <!-- {{ endControl.errors | json}} -->
+
+</div>

@@ -1,0 +1,17 @@
+<div class="row">
+    <label class="col-sm-2 col-form-label">{{label}}</label>
+
+    <div class="col-sm-5">
+      <angular2-multiselect
+        [data]="data"
+        [settings]="dropdownSettings"
+        [formControl]="control"
+        (onSelect)="onItemSelect($event)"
+        (onDeSelect)="OnItemDeSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+        (onDeSelectAll)="onDeSelectAll($event)"
+        [(ngModel)]="selectedItems" 
+      >
+      </angular2-multiselect>
+    </div>
+  </div>

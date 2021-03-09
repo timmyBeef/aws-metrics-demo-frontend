@@ -1,0 +1,82 @@
+<div class="sidebar" data-color="custom">
+  <div class="logo">
+    <a class="simple-text">
+    </a>
+    <div class="navbar-minimize">
+      <button
+        id="minimizeSidebar"
+        class="btn btn-simple btn-icon btn-neutral btn-round"
+        (click)="minimizeSidebar()"
+      >
+        <i
+          class="now-ui-icons text_align-center visible-on-sidebar-regular"
+        ></i>
+        <i
+          class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"
+        ></i>
+      </button>
+    </div>
+  </div>
+  <div class="sidebar-wrapper">
+    <div class="user">
+      <div class="photo"><img src="../assets/img/profile.jpg" /></div>
+      <div class="info">
+        <a
+          data-toggle="collapse"
+          href="#collapseExample"
+          (click)="myFunc($event)"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          <span> {{ username }} </span>
+        </a>
+      </div>
+    </div>
+    <ul class="nav">
+      <li routerLinkActive="active" *ngFor="let menuitem of menuItems">
+        <ng-container><!-- *ngIf="menuitem.show && adminVersion"-->
+          <!--If is a single link-->
+          <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'">
+            <i class="now-ui-icons {{ menuitem.icontype }}"></i>
+            <p>{{ menuitem.title }}</p>
+          </a>
+          <!--If it have a submenu-->
+          <a
+            data-toggle="collapse"
+            href="#{{ menuitem.collapse }}"
+            *ngIf="menuitem.type === 'sub'"
+            (click)="
+              myFunc($event, menuitem);
+              menuitem.isCollapsing === undefined &&
+                (menuitem.isCollapsed = !menuitem.isCollapsed)
+            "
+            [attr.aria-expanded]="!menuitem.isCollapsed"
+          >
+            <i class="now-ui-icons {{ menuitem.icontype }}"></i>
+            <p>{{ menuitem.title }}<b class="caret"></b></p>
+          </a>
+
+          <!--Display the submenu items-->
+          <div
+            id="{{ menuitem.collapse }}"
+            class="collapse"
+            *ngIf="menuitem.type === 'sub'"
+            [ngbCollapse]="menuitem.isCollapsed"
+          >
+            <ul class="nav">
+              <li
+                routerLinkActive="active"
+                *ngFor="let childitem of menuitem.children"
+              >
+                <a [routerLink]="[menuitem.path, childitem.path]">
+                  <span class="sidebar-mini-icon">{{ childitem.ab }}</span>
+                  <span class="sidebar-normal">{{ childitem.title }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</div>

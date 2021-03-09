@@ -1,0 +1,9 @@
+<div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn btn-outline-primary" id="dropdownBasic" ngbDropdownToggle>日期選單</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic">
+        <button *ngFor="let option of displayOptions"
+                type="button" class="dropdown-item" (click)="emit(option.startDate, option.endDate)">
+            {{option.label}}
+        </button>
+    </div>
+</div>

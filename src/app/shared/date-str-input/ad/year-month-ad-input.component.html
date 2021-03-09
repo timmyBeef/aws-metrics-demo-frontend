@@ -1,0 +1,13 @@
+<div class="row">
+  <label class="col-sm-2 col-form-label">{{ label }}</label>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <input
+        class="form-control datetimepicker"
+        placeholder="yyyy/mm"
+        [formControl]="control"
+        appYearMonthAdMask
+      />
+    </div>
+  </div>
+</div>

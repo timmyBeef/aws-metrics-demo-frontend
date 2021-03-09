@@ -1,0 +1,39 @@
+<div class="row">
+  <label class="col-sm-2 col-form-label">{{ label }}</label>
+  <div class="col-sm-7">
+    <div class="form-group form-file-upload form-file-simple">
+      <button
+        type="button"
+        class="btn btn-info btn-round"
+        *ngIf="!multiple"
+        (click)="onClick($event)"
+      >
+        上傳檔案
+      </button>
+      <span *ngIf="state.fileNames">{{'  ' + state.fileNames + '    共 ' + fileCnt + ' 筆'}}</span>
+      <textarea
+        type="text"
+        class="form-control"
+        [formControl]="control"
+      ></textarea>
+      <!-- 
+      <input
+        type="text"
+        class="form-control inputFileVisible"
+        placeholder="Multiple chooser..."
+        value="{{ state.fileNames }}"
+        *ngIf="multiple"
+        (focus)="onFocus($event)"
+      /> -->
+
+      <input
+        type="file"
+        class="inputFileHidden"
+        (change)="addFile($event)"
+        multiple="{{ multiple }}"
+        style="z-index: -1;"
+        #input
+      />
+    </div>
+  </div>
+</div>

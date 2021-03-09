@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ label }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="dataTables_wrapper">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  顯示
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  筆
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="搜尋內容"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+          >
+            <ngx-datatable-column
+              *ngFor="let col of columns; let i = index"
+              [name]="col.name"
+              [prop]="col.prop"
+              [width]="col.width"
+              [pipe]="col.pipe"
+            ></ngx-datatable-column>
+            <ngx-datatable-column
+              [sortable]="false"
+              [canAutoResize]="false"
+              [draggable]="false"
+              [resizeable]="false"
+            >
+              <ng-template
+                ngx-datatable-header-template
+                let-value="value"
+                let-allRowsSelected="allRowsSelected"
+                let-selectFn="selectFn"
+              >
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-value="value"
+                let-isSelected="isSelected"
+                let-onCheckboxChangeFn="onCheckboxChangeFn"
+              >
+                <button
+                  class="btn btn-info btn-round"
+                  (click)="open(showAppMemberSetting ? appMemberTemplate : classic)"
+                  *ngIf="showDetailBtn === true"
+                >
+                  {{ detailsLabel }}
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+      <!-- end content-->
+    </div>
+    <!--  end card  -->
+  </div>
+  <!-- end col-md-12 -->
+</div>
+<!-- end row -->
+<ng-container
+  *ngIf="showAppMemberSetting; then appMemberTemplate; else classic"
+>
+</ng-container>
+
+<ng-template let-c="close" let-d="dismiss" #classic>
+  <div class="modal-header">
+    <h5 class="modal-title text-center">{{ detailsLabel }}</h5>
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+        <ng-container *ngFor="let item of details">
+          <tr>
+            <th class="text-primary text-center">{{ item.name }}</th>
+            <td>{{ item.value }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template let-c="close" let-d="dismiss" #appMemberTemplate>
+  <div class="modal-header">
+    <h5 class="modal-title text-center">{{ 'appMemberTemplate' + detailsLabel }}</h5>
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+        <ng-container *ngFor="let item of details">
+          <h5 class="modal-title text-center">{{ item.categoryName }}</h5>
+          <tr *ngFor="let d of item.detail">
+            <th class="text-primary text-center">{{ d.name }}</th>
+            <td>{{ d.type }}</td>
+            <td>{{ d.value }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

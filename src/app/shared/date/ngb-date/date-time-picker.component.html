@@ -1,0 +1,7 @@
+<div class="date-time-picker">
+    <ngb-datepicker [(ngModel)]="date" (ngModelChange)="updateDate()" [startDate]="startDate" [minDate]="minDate" [maxDate]="maxDate" [disabled]="disabled"></ngb-datepicker>
+    <ngb-timepicker [(ngModel)]="time" [seconds]="seconds" [spinners]="spinners" (ngModelChange)="updateTime()" #timepicker></ngb-timepicker>
+    <div class="btn-toolbar float-right m-2" hidden>
+        <button type="button" class="btn btn-secondary" (click)="close()">關閉</button>
+    </div>
+</div>

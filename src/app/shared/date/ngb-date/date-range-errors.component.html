@@ -1,0 +1,26 @@
+<div [ngxErrors]="startFormControlName" #startErrors="ngxErrors" class="ngxErrors">
+    <div ngxError="ngbDate">
+        <div *ngIf="startErrors.getError('ngbDate') !== null">
+            <app-date-errors controlName="{{startFormControlName}}"></app-date-errors>
+        </div>
+    </div>
+    <div ngxError="required">
+        <strong class="text-danger">{{labelForStart}} 必填</strong>
+    </div>
+</div>
+
+<div [ngxErrors]="endFormControlName" #endErrors="ngxErrors" class="ngxErrors">
+    <div ngxError="ngbDate">
+        <div *ngIf="endErrors.getError('ngbDate') !== null">
+            <app-date-errors controlName="{{endFormControlName}}"></app-date-errors>
+        </div>
+    </div> 
+
+    <div ngxError="required">
+        <strong class="text-danger">{{labelForEnd}} 必填</strong>
+    </div>
+
+    <div ngxError="rangeCheck">
+        <strong class="text-danger">{{rangeErrorMessage}}</strong>
+    </div>
+</div>

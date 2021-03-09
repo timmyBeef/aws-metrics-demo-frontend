@@ -1,0 +1,13 @@
+<div [ngxErrors]="controlName" #myErrors="ngxErrors" class="ngxErrors">
+    <div ngxError="ngbDate">
+        <span *ngIf="myErrors.getError('ngbDate')?.invalid">
+            <strong>{{ myErrors.getError('ngbDate').invalid }}</strong> 不是正確的日期。
+        </span>
+        <span *ngIf="myErrors.getError('ngbDate')?.requiredAfter;">
+            日期不能晚於 {{ myErrors.getError('ngbDate').requiredAfter.year.toString().padStart(3, '0') + '/' + myErrors.getError('ngbDate').requiredAfter.month.toString().padStart(2, '0') + '/' + myErrors.getError('ngbDate').requiredAfter.day.toString().padStart(2, '0') }}。
+        </span>
+        <span *ngIf="myErrors.getError('ngbDate')?.requiredBefore">
+            日期不能早於 {{ myErrors.getError('ngbDate').requiredBefore.year.toString().padStart(3, '0') + '/' + myErrors.getError('ngbDate').requiredBefore.month.toString().padStart(2, '0') + '/' + myErrors.getError('ngbDate').requiredBefore.day.toString().padStart(2, '0') }}。
+        </span>
+    </div>
+</div>

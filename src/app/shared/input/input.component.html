@@ -1,0 +1,30 @@
+<div class="row">
+  <label class="col-sm-2 col-form-label">{{ label }}</label>
+  <div class="col-sm-7">
+    <div
+      class="form-group"
+      [ngClass]="{
+        'has-danger': showErrors(),
+        'has-success': !showErrors()
+      }"
+    >
+      <input
+        *ngIf="controlType === 'input'"
+        [placeholder]="placeholder"
+        [type]="inputType"
+        class="form-control"
+        [formControl]="control"
+      />
+      <textarea
+        *ngIf="controlType === 'textarea'"
+        type="text"
+        class="form-control"
+        [formControl]="control"
+      ></textarea>
+    </div>
+  </div>
+  <label *ngIf="showErrors()" class="col-sm-3 label-on-right">
+    <code *ngIf="control?.errors?.required">請輸入欄位</code>
+    <code *ngIf="control?.errors?.minlength">請至少輸入長度 {{control?.errors?.minlength?.requiredLength}}</code>
+  </label>
+</div>

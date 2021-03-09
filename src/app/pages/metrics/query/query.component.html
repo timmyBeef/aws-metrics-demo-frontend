@@ -1,0 +1,61 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header btn-toolbar">
+          <h4 class="card-title">AWS EC2</h4>
+          <div>
+            <button type="button" (click) = "query()" class="btn btn-primary btn-simple">
+              查詢
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>名稱</th>
+                  <th>狀態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of data; let i = index">
+                  <tr>
+                    <td class="text-center">{{i+1}}.</td>
+                    <td>{{ item.name }}</td>
+                    <td>
+                      <ng-container *ngIf="item.value !== false && item.value !== true">
+                        <button class="btn btn-primary btn-round">
+                          <span class="btn-label">
+                            <i class="now-ui-icons arrows-1_refresh-69"></i>
+                          </span>
+                          <strong> refreshing...</strong>
+                        </button>
+                      </ng-container>
+                      <ng-container *ngIf="item.value">
+                        <button class="btn btn-success btn-round">
+                          <span class="btn-label">
+                            <i class="now-ui-icons ui-1_check"></i>
+                          </span>
+                          <strong> 正常</strong>
+                        </button>
+                      </ng-container>
+                      <ng-container *ngIf="!item.value">
+                        <button class="btn btn-danger btn-round">
+                          <i class="now-ui-icons ui-1_simple-remove"></i> <strong> 異常</strong>
+                        </button>
+                      </ng-container>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+
+
+@import "admin-dashboard/variables";
+@import "admin-dashboard/mixins";
+
+// Core CSS
+@import "admin-dashboard/buttons";
+@import "admin-dashboard/social-buttons";
+@import "admin-dashboard/inputs";
+@import "admin-dashboard/typography";
+@import "admin-dashboard/misc";
+@import "admin-dashboard/navbar";
+@import "admin-dashboard/dropdown";
+@import "admin-dashboard/alerts";
+@import "admin-dashboard/images";
+@import "admin-dashboard/nucleo-outline";
+@import "admin-dashboard/tables";
+@import "admin-dashboard/footers";
+@import "admin-dashboard/fixed-plugin";
+
+// components
+@import "admin-dashboard/checkboxes-radio";
+@import "admin-dashboard/progress";
+@import "admin-dashboard/badges";
+@import "admin-dashboard/pagination";
+@import "admin-dashboard/info-areas";
+@import "admin-dashboard/pills";
+@import "admin-dashboard/tabs";
+@import "admin-dashboard/rtl";
+@import "admin-dashboard/popups";
+@import "admin-dashboard/modals";
+@import "admin-dashboard/carousel";
+@import "admin-dashboard/sidebar-and-main-panel";
+@import "admin-dashboard/timeline";
+
+// cards
+@import "admin-dashboard/cards";
+@import "admin-dashboard/cards/card-chart";
+@import "admin-dashboard/cards/card-user";
+@import "admin-dashboard/cards/card-plain";
+
+@import "admin-dashboard/cards/card-background";
+@import "admin-dashboard/cards/card-collapse";
+@import "admin-dashboard/cards/card-map";
+@import "admin-dashboard/cards/card-contributions";
+@import "admin-dashboard/cards/card-info-area";
+@import "admin-dashboard/cards/card-lock";
+@import "admin-dashboard/cards/card-pricing";
+@import "admin-dashboard/cards/card-profile";
+@import "admin-dashboard/cards/card-signup";
+@import "admin-dashboard/cards/card-stats-mini";
+@import "admin-dashboard/cards/card-stats";
+@import "admin-dashboard/cards/card-subcategories";
+@import "admin-dashboard/cards/card-testimonials";
+@import "admin-dashboard/cards/card-wizard";
+
+// Plugins CSS
+@import "admin-dashboard/plugins/plugin-bootstrap-switch";
+@import "admin-dashboard/plugins/plugin-nouislider";
+@import "admin-dashboard/plugins/plugin-animate-bootstrap-notify";
+@import "admin-dashboard/plugins/plugin-perfect-scrollbar";
+@import "admin-dashboard/plugins/plugin-sweetalert2";
+@import "admin-dashboard/plugins/plugin-card-wizard";
+@import "admin-dashboard/plugins/plugin-datetimepicker";
+@import "admin-dashboard/plugins/plugin-bootstrap-select";
+@import "admin-dashboard/plugins/plugin-jasny-fileupload";
+@import "admin-dashboard/plugins/plugin-tagsinput";
+@import "admin-dashboard/plugins/plugin-datatables.net";
+@import "admin-dashboard/plugins/plugin-jquery.jvectormap";
+@import "admin-dashboard/plugins/plugin-fullcalendar";
+
+// example pages and sections
+@import "admin-dashboard/example-pages";
+@import "admin-dashboard/sections";
+
+@import "admin-dashboard/responsive";
+@import "admin-dashboard/media-queries";
+
+// angular differences
+@import "admin-dashboard/angular/angular-differences";
