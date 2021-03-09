@@ -1,4 +1,7 @@
+# aws-metrics-demo-frontend" 
 
+```
+npm insatll
 
-
- "# aws-metrics-demo-frontend" 
+npm start
+```
