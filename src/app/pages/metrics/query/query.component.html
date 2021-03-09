@@ -35,7 +35,7 @@
                           <strong> refreshing...</strong>
                         </button>
                       </ng-container>
-                      <ng-container *ngIf="item.value">
+                      <ng-container *ngIf="!item.value">
                         <button class="btn btn-success btn-round">
                           <span class="btn-label">
                             <i class="now-ui-icons ui-1_check"></i>
@@ -43,7 +43,7 @@
                           <strong> 正常</strong>
                         </button>
                       </ng-container>
-                      <ng-container *ngIf="!item.value">
+                      <ng-container *ngIf="item.value">
                         <button class="btn btn-danger btn-round">
                           <i class="now-ui-icons ui-1_simple-remove"></i> <strong> 異常</strong>
                         </button>
